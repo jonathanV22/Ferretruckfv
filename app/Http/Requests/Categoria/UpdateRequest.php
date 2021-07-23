@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre'=>'required|string|max:50',
+             'descripcion'=>'nullable|string|max:150'
+        ];
+    }
+    public function mensajes(){
+        return[
+            'nombre.required'=>'El campo nombre es requerido',
+            'nombre.string'=>'El valor del campo nombre es incorrecto',
+            'nombre.max'=>'El campo nombre solo permite 50 caracteres',
+            'descripcion.nullable'=>'El campo descripción es requerido',
+            'descripcion.string'=>'El valor del campo descripción es incorrecto',
+            'descripcion.max'=>'El campo descripción solo permite 50 caracteres'
         ];
     }
 }
