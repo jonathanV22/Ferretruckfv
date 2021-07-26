@@ -24,7 +24,7 @@ class CategoriaController extends Controller
     public function create()
     {
         $user = Usuario :: get();
-        return view('admin.venta.create', compact('usuario')); 
+        return view('admin.venta.create', compact('user')); 
     }
 
     //
@@ -32,12 +32,13 @@ class CategoriaController extends Controller
     {
         $venta = venta::create($request->all());
 
-       // foreach ($request -> id as $key => $producto){
-          //  $results[] = array("id") => $request-> id [$key];
-            //"quantily"->$request->quantily[$key];"precio"->$request->precio[$key];
-       // }
-        //$venta ->DetalleVenta()-> createMany($results);
-        //return redirect()->route('venta.index');
+       foreach ($request -> producto_id as $key => $producto){
+          $results[] = array("producto_id" => $request-> producto_id[$key],
+            "cantidad"=>$request->cantidad[$key],"preciotal"=>$request->preciotal[$key],
+            "estadoVenta"=>$request->estadoVenta[$key],"desc"=>$request->desc[$key]);
+        }
+        $venta->detalleVenta()-> createMany($results);
+        return redirect()->route('venta.index');
     }
 
      //    
@@ -50,21 +51,21 @@ class CategoriaController extends Controller
     public function edit(venta $venta)
     {
         $usuario = Usuario :: get();
-        return view('admin.venta.show'); compact('venta');
+        return view('admin.venta.show',compact('usuario')); 
     }
 
    
     //
-    //public function update(UpdateRequest $request, venta $venta)
-    //{
-       // $venta->update($request->all());
-        // return redirect()->route('venta.index');
-    //}
+    public function update(UpdateRequest $request, venta $venta)
+    {
+        //$venta->update($request->all());
+        //return redirect()->route('venta.index');
+    }
 
-    //
+
     public function destroy(venta $venta)
     {
-       // $venta->delete();
+        //$venta->delete();
         //return redirect()->route('venta.index');
     }
 }

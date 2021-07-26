@@ -21,7 +21,7 @@ class CreateProductosTable extends Migration
             $table->string('imagen');
             $table->integer('precio');
             $table->integer('stock');
-            $table->enum('estado',['Activado','Desactivado']);  
+            $table->enum('estado',['Activado','Desactivado'])->default('Activado');  
             $table->boolean('oferta');  
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

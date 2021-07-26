@@ -7,15 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class venta extends Model
 {
     protected $fillable = [
-        'nombre',
-        'descripcion',
-        'marca',
-        'imagen',
-        'precio',
-        'stock',
-        'estado',
-        'oferta',
         'user_id',
-        'categoria_id'
+        'u_venta_id',
+        'precioFinal',
+        'iva',
+        'fecha',
     ];
+    public function detalleVenta(){
+        return $this->hasMany(DetalleVenta::class);
+    }
+    public function usuario(){
+        return $this->belongsTo(Usuario::class);
+    }
+
 }
