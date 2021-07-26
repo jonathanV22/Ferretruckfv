@@ -1,5 +1,7 @@
 <?php
 
+use App\Categoria;
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('user', 'CategoriaController')->names('Categorias');
+Route::resource('user', 'UsuarioController')->names('Usuario');
+Route::resource('user', 'ProductoController')->names('Productos');
+Route::resource('user', 'VentaController')->names('Venta');
+Route::resource('user', 'DetalleVentaController')->names('DetalleVenta');
+
