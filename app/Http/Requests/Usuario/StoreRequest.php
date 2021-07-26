@@ -37,7 +37,7 @@ class StoreRequest extends FormRequest
     }
     public function mensajes(){
         return[
-            'nombre.required'=>'El campo nombre es requerido',
+            'nombre.required'=>'El campo nombre es requeridos',
             'nombre.string'=>'El valor del campo nombre es incorrecto.',
             'nombre.max'=>'El campo nombre solo permite 50 caracteres',
 
